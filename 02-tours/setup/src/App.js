@@ -12,11 +12,16 @@ function App() {
     try {
       const response = await fetch(url)
       const tours = await response.json()
+      setLoading(false)
       setTours(tours)
     } catch (error) {
       console.log(error)
     }
   }, [])
+  const removeTour = (id) => {
+    const newTours = tours.filter((tour) => tour.id !== id)
+    setTours(newTours)
+  }
 
   useEffect(() => {
     fetchData()
@@ -24,7 +29,7 @@ function App() {
 
   return (
     <main>
-      <Tours tours={tours} />
+      {loading ? <Loading /> : <Tours tours={tours} removeTour={removeTour} />}
     </main>
   )
 }
