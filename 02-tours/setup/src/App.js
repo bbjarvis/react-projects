@@ -33,19 +33,16 @@ function App() {
           {tours.map((tour) => {
             const { id, name, info, image, price } = tour
             return (
-              <section>
-                <article key={id} className='single-tour'>
-                  <img className='single-tour img' src={image} alt={name}></img>
-
-                  <footer className='ingle-tour footer'>
-                    <div className='tour-info'>
-                      <h4>{name}</h4>
-                      <h4 className='tour-price'>${price}</h4>
-                    </div>
-                  </footer>
+              <article key={id} className='single-tour'>
+                <img src={image} alt={name}></img>
+                <footer>
+                  <div className='tour-info'>
+                    <h4>{name}</h4>
+                    <h4 className='tour-price'>${price}</h4>
+                  </div>
                   <p className='tour-info'>{info}</p>
-                </article>
-              </section>
+                </footer>
+              </article>
             )
           })}
         </div>
