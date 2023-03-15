@@ -15,6 +15,8 @@ function App() {
       setLoading(false)
       setTours(tours)
     } catch (error) {
+      setLoading(false)
+
       console.log(error)
     }
   }, [])
@@ -29,7 +31,18 @@ function App() {
 
   return (
     <main>
-      {loading ? <Loading /> : <Tours tours={tours} removeTour={removeTour} />}
+      {loading ? (
+        <Loading />
+      ) : tours.length === 0 ? (
+        <div className='title'>
+          <h2>no tours left</h2>
+          <button className='btn' onClick={() => fetchData()}>
+            refersh
+          </button>
+        </div>
+      ) : (
+        <Tours tours={tours} removeTour={removeTour} />
+      )}
     </main>
   )
 }
