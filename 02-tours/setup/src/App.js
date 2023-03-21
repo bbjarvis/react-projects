@@ -9,6 +9,8 @@ function App() {
   const [tours, setTours] = useState([])
 
   const fetchData = useCallback(async () => {
+    setLoading(true)
+
     try {
       const response = await fetch(url)
       const tours = await response.json()
